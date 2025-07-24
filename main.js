@@ -86,7 +86,15 @@ async function createTrayMenu() {
     }
   ]);
 
-  tray.setContextMenu(contextMenu);
+  // Remove setContextMenu; instead, handle right-click event
+  tray.removeAllListeners('right-click');
+  tray.removeAllListeners('click');
+  tray.on('right-click', () => {
+    tray.popUpContextMenu(contextMenu);
+  });
+  tray.on('click', () => {
+    // Do nothing on left click
+  });
 }
 
 // App event handlers
