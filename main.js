@@ -73,8 +73,15 @@ async function createTrayMenu() {
   tray.on('right-click', () => {
     tray.popUpContextMenu(contextMenu);
   });
-  tray.on('click', () => {
-    // Do nothing on left click
+  tray.on('click', async () => {
+    // On left click, toggle between dark and light mode only
+    const currentMode = await getCurrentAppearanceMode();
+    if (currentMode === 'light') {
+      setAppearanceMode('true'); // Switch to dark
+    } else if (currentMode === 'dark') {
+      setAppearanceMode('false'); // Switch to light
+    }
+    // Do nothing otherwise
   });
 }
 
