@@ -60,25 +60,6 @@ async function createTrayMenu() {
       checked: currentMode === 'light',
       click: () => setAppearanceMode('false')
     },
-    {
-      label: 'Auto',
-      type: 'radio',
-      checked: currentMode === 'auto',
-      click: () => {
-        // For auto mode, we need to check if system is in dark mode
-        exec('osascript -e \'tell application "System Events" to tell appearance preferences to get dark mode\'', (error, stdout) => {
-          if (!error) {
-            const isDark = stdout.trim() === 'true';
-            setAppearanceMode(isDark ? 'true' : 'false');
-          }
-        });
-      }
-    },
-    { type: 'separator' },
-    {
-      label: 'Refresh',
-      click: () => createTrayMenu()
-    },
     { type: 'separator' },
     {
       label: 'Quit',
