@@ -38,9 +38,19 @@ function getCurrentAppearanceMode() {
   });
 }
 
+// Function to update tray icon based on mode
+function updateTrayIcon(mode) {
+  let iconFile = 'light.png';
+  if (mode === 'dark') {
+    iconFile = 'dark.png';
+  }
+  tray.setImage(path.join(__dirname, 'assets', iconFile));
+}
+
 // Function to create tray menu
 async function createTrayMenu() {
   const currentMode = await getCurrentAppearanceMode();
+  updateTrayIcon(currentMode);
   
   const contextMenu = Menu.buildFromTemplate([
     {
@@ -78,8 +88,10 @@ async function createTrayMenu() {
     const currentMode = await getCurrentAppearanceMode();
     if (currentMode === 'light') {
       setAppearanceMode('true'); // Switch to dark
+      updateTrayIcon('dark');
     } else if (currentMode === 'dark') {
       setAppearanceMode('false'); // Switch to light
+      updateTrayIcon('light');
     }
     // Do nothing otherwise
   });
@@ -87,8 +99,8 @@ async function createTrayMenu() {
 
 // App event handlers
 app.whenReady().then(() => {
-  // Always use icon.png for the tray icon
-  tray = new Tray(path.join(__dirname, 'assets', 'icon.png'));
+  // Always use light.png for the initial tray icon
+  tray = new Tray(path.join(__dirname, 'assets', 'light.png'));
   tray.setToolTip('macOS Appearance Switcher');
   
   // Create initial menu
