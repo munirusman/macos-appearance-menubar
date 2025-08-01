@@ -12,13 +12,13 @@ A simple menu bar utility for macOS that allows you to quickly switch between Li
 ## Installation
 
 ### Option 1: DMG Installer (Recommended)
-1. Download the latest release from the [Releases page](https://github.com/YOUR_USERNAME/macos-appearance-switcher/releases)
+1. Download the latest release from the [Releases page](https://github.com/munirusman/macos-appearance-menubar/releases)
 2. Open the `.dmg` file
 3. Drag the app to your Applications folder
 4. Launch the app from Applications
 
 ### Option 2: Direct App File
-1. Download the `.zip` file from the [Releases page](https://github.com/YOUR_USERNAME/macos-appearance-switcher/releases)
+1. Download the `.zip` file from the [Releases page](https://github.com/munirusman/macos-appearance-menubar/releases)
 2. Extract the ZIP file
 3. Run the `.app` file directly (no installation required)
 4. Optionally drag to Applications folder for permanent installation
