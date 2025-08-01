@@ -1,67 +1,56 @@
 # macOS Appearance Switcher
 
-A simple Electron app that adds a menu bar item to quickly switch between macOS appearance modes (Dark, Light, and Auto).
+A simple menu bar utility for macOS that allows you to quickly switch between Light and Dark appearance modes.
 
 ## Features
 
-- Menu bar integration
-- Quick switching between Dark, Light, and Auto appearance modes
-- Real-time menu updates when system appearance changes
-- Refresh option to manually update the menu
+- **Menu Bar App**: Runs in the menu bar, no dock icon
+- **Quick Toggle**: Left-click to switch between Light and Dark modes
+- **Context Menu**: Right-click for detailed options
+- **Universal Binary**: Works on both Apple Silicon and Intel Macs
 
 ## Installation
 
-1. **Provide an icon:**
-   - Place your own 16x16 PNG icon at `assets/icon.png` (required for the menu bar)
+### Option 1: DMG Installer (Recommended)
+1. Download the latest release from the [Releases page](https://github.com/YOUR_USERNAME/macos-appearance-switcher/releases)
+2. Open the `.dmg` file
+3. Drag the app to your Applications folder
+4. Launch the app from Applications
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the app:
-   ```bash
-   npm start
-   ```
+### Option 2: Direct App File
+1. Download the `.zip` file from the [Releases page](https://github.com/YOUR_USERNAME/macos-appearance-switcher/releases)
+2. Extract the ZIP file
+3. Run the `.app` file directly (no installation required)
+4. Optionally drag to Applications folder for permanent installation
 
 ## Usage
 
-Once the app is running, you'll see your icon in the macOS menu bar. Click on it to see the following options:
+- **Left-click** the menu bar icon to toggle between Light and Dark modes
+- **Right-click** for a context menu with more options
+- The icon changes to reflect the current appearance mode
 
-- **Dark Mode**: Switches to dark appearance
-- **Light Mode**: Switches to light appearance  
-- **Auto**: Follows system appearance settings
-- **Refresh**: Manually refresh the menu
-- **Quit**: Close the app
+## Permissions
 
-## Building
+The app requires accessibility permissions to control system appearance settings. You'll be prompted to grant permission in System Preferences > Security & Privacy > Privacy > Accessibility.
 
-To build a distributable app:
+## Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Run in development mode
+npm run dev
+
+# Build for distribution
 npm run build
 ```
-
-The built app will be available in the `dist` folder.
 
 ## Requirements
 
 - macOS 10.14 or later
-- Node.js 16 or later
-- Electron 28 or later
-
-## Permissions
-
-The app requires accessibility permissions to change system appearance settings. You may be prompted to grant these permissions in System Preferences > Security & Privacy > Privacy > Accessibility.
-
-## Development
-
-To run in development mode:
-
-```bash
-npm run dev
-```
+- Works on both Apple Silicon and Intel Macs
 
 ## License
 
-MIT 
+MIT License - see LICENSE file for details. 

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "electron .",
     "build": "electron-builder",
-    "dev": "electron . --dev"
+    "dev": "electron . --dev",
+    "release": "npm run build && echo 'Build complete. Now create a GitHub release and upload the files from dist/mac/'"
   },
   "keywords": [
     "electron",
@@ -28,7 +29,19 @@
     },
     "mac": {
       "category": "public.app-category.utilities",
-      "icon": "assets/icon.icns"
+      "extendInfo": {
+        "LSUIElement": true
+      },
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["universal"]
+        },
+        {
+          "target": "zip",
+          "arch": ["universal"]
+        }
+      ]
     }
   }
 }
