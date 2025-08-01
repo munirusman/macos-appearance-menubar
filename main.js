@@ -1,50 +1,11 @@
 const { app, Tray, Menu, nativeTheme } = require('electron');
-const path = require('path');
-const { exec } = require('child_process');
+const { setAppearanceMode, getCurrentAppearanceMode, updateTrayIcon: updateTrayIconUtil } = require('./utils');
 
 let tray = null;
 
-// Function to set macOS appearance mode
-function setAppearanceMode(mode) {
-  const command = `osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to ${mode}'`;
-  
-  exec(command, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error setting appearance mode: ${error}`);
-      return;
-    }
-    console.log(`Appearance mode set to: ${mode}`);
-  });
-}
-
-// Function to get current appearance mode
-function getCurrentAppearanceMode() {
-  return new Promise((resolve) => {
-    exec('osascript -e \'tell application "System Events" to tell appearance preferences to get dark mode\'', (error, stdout) => {
-      if (error) {
-        console.error(`Error getting appearance mode: ${error}`);
-        resolve('auto');
-        return;
-      }
-      const result = stdout.trim();
-      if (result === 'true') {
-        resolve('dark');
-      } else if (result === 'false') {
-        resolve('light');
-      } else {
-        resolve('auto');
-      }
-    });
-  });
-}
-
 // Function to update tray icon based on mode
 function updateTrayIcon(mode) {
-  let iconFile = 'light.png';
-  if (mode === 'dark') {
-    iconFile = 'dark.png';
-  }
-  tray.setImage(path.join(__dirname, 'assets', iconFile));
+  updateTrayIconUtil(tray, mode);
 }
 
 // Function to create tray menu
@@ -100,6 +61,7 @@ async function createTrayMenu() {
 // App event handlers
 app.whenReady().then(() => {
   // Always use light.png for the initial tray icon
+  const path = require('path');
   tray = new Tray(path.join(__dirname, 'assets', 'light.png'));
   tray.setToolTip('macOS Appearance Switcher');
   

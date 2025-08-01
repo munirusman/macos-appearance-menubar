@@ -44,6 +44,15 @@ npm run dev
 
 # Build for distribution
 npm run build
+
+# Run tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage
+npm run test:coverage
 ```
 
 ## Requirements
