@@ -2,6 +2,8 @@
 
 A simple menu bar utility for macOS that allows you to quickly switch between Light and Dark appearance modes.
 
+https://github.com/user-attachments/assets/33b7ab97-6eb1-4f53-b1f0-4f2e685a7d42
+
 ## Features
 
 - **Menu Bar App**: Runs in the menu bar, no dock icon
